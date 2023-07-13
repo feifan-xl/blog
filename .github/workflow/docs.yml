@@ -9,7 +9,7 @@ on:
   # 手动触发部署
   workflow_dispatch:
 jobs:
-    deploy:
+    docs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
