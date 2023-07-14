@@ -19,7 +19,7 @@ jobs:
           cache: npm
       - run: npm install
 
-      - name: Build
+      - name: Build docs
         run: npm run docs:build
 
       - name: Deploy to GitHub Pages
