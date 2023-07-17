@@ -1,3 +1,8 @@
+---
+sidebar: false
+sidebarDepth: 3
+--- 
 
-
-- [async](./es6/async)  
+### 目录
+- [async](./async/)
+- [class](./class/)

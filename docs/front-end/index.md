@@ -1,16 +1,9 @@
 ---
-sidebar: auto
+sidebar: false
 sidebarDepth: 3
----
+--- 
 
-
-###  es6
-
-- [js-base](./front-end/js-base) 
-- [es6](./front-end/es6)  
-
-
-### js-base
-
-- [js-base](./front-end/js-base) 
-- [es6](./front-end/es6)  
+### 目录
+- [es6](./es6/)
+- [js](./js/)
+- [vue](./vue/)
