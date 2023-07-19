@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "build:menu": "node ./build-menu.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^2.0.0-beta.66",
+    "@vuepress/plugin-nprogress": "^2.0.0-beta.66",
     "vuepress": "^2.0.0-beta.66"
   }
 }
