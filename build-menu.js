@@ -32,7 +32,6 @@ function printSameLevelMenu ( preDir, dirName) {
 let str =
 `---
 sidebar: false
-sidebarDepth: 3
 --- 
 
 ### 目录

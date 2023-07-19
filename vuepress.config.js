@@ -11,7 +11,7 @@ export default defineUserConfig({
   theme: defaultTheme({
     lastUpdated: false,
     contributors: false,
-    sidebar: false,
+    // sidebar: false,
 
     navbar: [
       {
