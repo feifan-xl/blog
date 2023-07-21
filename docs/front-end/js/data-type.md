@@ -322,6 +322,22 @@ valueOf: 返回它相应的原始值
     }
   ```
 
+## 5. function object
 
+function 也是一种对象，有对象的部分特点:  
+  - name
+  - length 返回函数入参的个数
+  - 可以增加自定义属性
 
+### new Function
 
+- 使用场景: 根据重网络或其他地方获取的字符串,动态创建函数  
+
+- 使用限制: 只能访问全局变量,无法访问`outer function`中的变量
+
+- 语法: 
+    ```js
+      new Function('a', 'b', 'return a + b')
+      new Function('a, b', 'return a + b')
+      new Function(['a', 'b'], 'return a + b')
+    ```

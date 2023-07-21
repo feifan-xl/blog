@@ -13,14 +13,13 @@
       - context
       - scoped
       - scoped chain
+      - currying
     - this
       - this
       - new
       - apply/call/bind
-    - closure
     - oop
       - prototype 
-      - currying
     - async operation
       - event loop 
         - browser 
