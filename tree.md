@@ -1,7 +1,7 @@
 
 
 ### front end
-  - js base
+  - js base ✅
     - data type
       - types 
         - complex heap
@@ -20,6 +20,7 @@
       - apply/call/bind
     - oop
       - prototype 
+      - inheritance
     - async operation
       - event loop 
         - browser 
@@ -31,14 +32,12 @@
   - css
   - ts
   - browser
-    - v8 compiler principle
-    - gc
+    - gc ✅
     - process / thread
     - message
-    - storage
-    - cache
-    - render
-    - event model
+    - cache  ✅
+    - render ✅ 
+    - event model  ✅
       - bubble
       - capture
       - target
@@ -49,6 +48,7 @@
   - project
   - performance
      - debounce / throttle
+     - rending 
   - vue
   - react
   - write-code

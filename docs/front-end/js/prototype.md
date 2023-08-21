@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 1
+sidebarDepth: 2
 ---
 
 
@@ -69,5 +69,46 @@ sidebarDepth: 1
 
 ## inheritance
 
+### es5
 
-## class
+  ```js
+  // 1. 原型继承
+  function Cat (name) {}
+  Cat.prototype = new Animal()
+
+  // 2. 构造函数继承
+  function Cat (name) {
+    Animal.call(this, name)
+  }
+  var cat = new Cat('name')
+
+  // 3. 组合寄生继承
+
+  function Cat (name) {
+    Animal.call(this, name)
+  }
+
+  (function () {
+    let Super = function () {}
+    Super.prototype = Animal.prototype
+    Cat.prototype = new Super()
+    Cat.prototype.constructor = Cat
+  })()
+  ```
+
+### es6
+
+  ```js
+  class Animal {
+    constructor (name) {
+      this.name = name
+    }
+  }
+
+  class Cat extends Animal {
+    constructor (name) {
+      super(name)
+    }
+  }
+  ```
+
