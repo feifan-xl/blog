@@ -105,3 +105,42 @@ Layout 树和 DOM 树不一定是一一对应的，为了构建 Layout 树，浏
 
 > https://febook.hzfe.org/awesome-interview/book2/browser-render-mechanism
 > https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
+https://segmentfault.com/a/1190000023609412
+
+
+## repaint & reflow
+
+### 什么是重排重绘
+
+浏览器渲染由获取资源到绘制好图形， 会经历几个阶段:
+  parseHtml -> layout -> paint -> composite
+  - Parse HTML：相关引擎分别解析文档和样式表以及脚本，生成 DOM 和 CSSOM ，最终合成为 Render 树。
+  - Layout：浏览器通过 Render 树中的信息，以递归的形式计算出每个节点的尺寸大小和在页面中的具体位置。
+  - Paint：浏览器将 Render 树中的节点转换成在屏幕上绘制实际像素的指令，这个过程发生在多个图层上。
+  - Composite：浏览器将所有层按照一定顺序合并为一个图层并绘制在屏幕上。
+
+当dom或cssom 被修改时， 会导致浏览器重复执行 layout paint 步骤，就被成为重绘和重排 
+
+
+### 引起重排/重绘的常见操作 
+
+重绘: 外观变化时， 如color opacity等  
+重排: 
+  - 布局结果或节点内容变化时，如height float position
+    - 盒子尺寸类型
+    - 定位 (正常流，浮动和决定定位)
+    - 文档树中元素之间的关系变化
+    - 外部信息(视口大小)
+  - 获取布局信息时， 如 offsetTop getComputedStyle
+
+
+
+### 解决方案
+
+- 对 DOM 进行批量写入和读取（通过虚拟 DOM 或者 DocumentFragment 实现）。
+- 避免对样式频繁操作，了解常用样式属性触发 Layout / Paint / Composite 的机制，合理使用样式。
+- 合理利用特殊样式属性（如 transform: translateZ(0) 或者 will-change），将渲染层提升为合成层，开启 GPU 加速，提高页面性能。
+- 使用变量对布局信息（如 clientTop）进行缓存，避免因频繁读取布局信息而触发重排和重绘。
+- 需要多次重排的元素 positon 为absolute fixed， 脱离文档流，就不回影响其他元素
+- display none
+

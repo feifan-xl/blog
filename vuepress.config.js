@@ -22,6 +22,10 @@ export default defineUserConfig({
         text: 'front-end',
         link: '/front-end/',
       },
+      {
+        text: 'cs-other',
+        link: '/CS-other/',
+      },
       // {
       //   text: 'FE',
       //   children: [
