@@ -94,6 +94,6 @@ sidebarDepth: 2
     function newObject (context, ...args) {
       const obj = Object.create(context.prototype)
       let res = context.call(obj, ...args)
-      return typeof res === 'object' ? res : obj
+      return typeof res === 'object' && res != null ? res : obj
     }
   ```
