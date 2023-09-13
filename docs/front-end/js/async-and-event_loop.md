@@ -200,7 +200,22 @@ NodeJS中执行宏队列的回调任务有6个阶段，按如下方式依次执�
 
 ### web worker
 
-指的是一种可由脚本创建的后台任务，任务执行中可以向其创建者收发信息
+指的是一种可由脚本创建的后台任务，任务执行中可以向其创建者收发信息  
+
+Web Worker 为 JavaScript 创造了多线程环境，允许主线程创建 Worker 线程，将一些任务分配给 Worker 线程运行，处理完后可以通过 postMessage 将结果传递给主线程。优点在于可以在一个单独的线程中执行费时的处理任务，从而允许主线程中的任务（通常是 UI）运行不被阻塞/放慢。
+
+使用 Web Worker 时有以下三点需要注意的地方：
+
+在 Worker 内部无法访问主线程的任何资源，包括全局变量，页面的 DOM 或者其他资源，因为这是一个完全独立的线程。  
+Worker 和主线程间的数据传递通过消息机制进行。使用 postMessage 方法发送消息；使用 onmessage 事件处理函数来响应消息。 
+Worker 可以创建新的 Worker，新的 Worker 和父页面同源。Worker 在使用 XMLHttpRequest 进行网络 I/O 时，XMLHttpRequest 的 responseXML 和 channel 属性会返回 null。  
+Web Worker 主要应用场景：
+
+处理密集型数学计算
+大数据集排序
+数据处理（压缩，音频分析，图像处理等）
+高流量网络通信
+参考资料
 
 
 ### MessageChannel

