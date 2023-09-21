@@ -8,5 +8,7 @@ sidebar: false
 - [engineering](./engineering/)
 - [es6](./es6/)
 - [js](./js/)
+- [other](./other/)
 - [react](./react/)
+- [ts](./ts/)
 - [vue](./vue/)

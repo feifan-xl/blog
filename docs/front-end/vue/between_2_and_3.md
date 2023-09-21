@@ -1,6 +1,42 @@
 
 
 
+### 3.x的设计目标
+
+
+- 新特性
+  - 更快
+    - 响应式系统提升
+    - 编译优化
+  - 更小
+    - 结构重构 支持tree-shaking 
+  - 更易于维护
+    - ts
+    - monorepo
+  - 新功能
+    - composition API
+    - fragment teleport suspense
+- 响应式 系统
+  - proxy 重写  
+  - 可以监听动态新增的属性
+  - 可以监听删除的属性
+  - 可以监听数组索引和length
+  - 性能提升 不需要递归遍历
+- 编译优化
+  - 静态提升 静态节点会被提升到 render 外
+  - slot 编译优化， 非动态 slot 属性的更新 只会触发子组件更新
+    - 2.0 中父组件更新 slot会强制update
+    - 3.0 优化了 slot 的生成， 使得非动态slot中属性的更新只会触发子组件的更新
+  - diff 优化 添加 patchFlag 标识， 渲染时直接复用  不需要diff
+    - 2.0 深度优先 同级比较 双端比较
+    - 3.0 对于不参与更新的元素，做静态标记并提示，只会被创建一次，在渲染时直接复用，不会进行diff
+  - 事件缓存
+    - 2.0 针对节点绑定的事件 每次触发都要重新生成新的function去更新
+    - 3.0 中 提供了事件缓存对象 cacheHandlers 开启后，编译时回自动生成函数事件
+- fragmen
+  - vue2 基于snabbdom， 为了提高diff 效率， 每个组件是一个vnode， 只有一个节点
+  - vue3 重写vdom， 每个组件对应的vnode数量就不那么重要了
+
 
 
 ### composition API
@@ -58,5 +94,22 @@
 ### list
 
 1. fragment
-2. teleport
+  - vue2  一个组件只有一个vdom，只有一个根
+  - vue3 可以有多个根节点
+2. teleport(Portal)
 3. suspense
+
+
+
+
+### composition API 原理
+
+ref 其实是reactive的再次封装, 主要用来给基本类型使用
+
+
+
+### watch  watchEffect
+  - watchEffect 立即运行, 被动的追踪它的依赖,当这些依赖改变时重新执行该函数
+  - watch 是侦测一个或多个响应式数据源并在数据源变化时调用一个回调函数
+
+> https://juejin.cn/post/7139921537896808479#heading-5
