@@ -83,6 +83,7 @@ sidebarDepth: 2
   var cat = new Cat('name')
 
   // 3. 组合寄生继承
+  // 借用构造函数来继承属性，使用混合式原型链继承方法
 
   function Cat (name) {
     Animal.call(this, name)

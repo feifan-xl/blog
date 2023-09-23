@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 function isIneffective(name) {
-  return ['.vuepress', 'index.md'].includes(name) || name.includes('.png');
+  return ['.vuepress', 'index.md'].includes(name) || name.includes('.png')|| name.includes('.js');
 }
 
 fs.readdir('./docs', (err, dirList) => {

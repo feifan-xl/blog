@@ -105,7 +105,7 @@ function throttle (fn, time) {
 Navigation Timing API and Lighthouse Performance
 
 Lighthouse Performance:
-1. TTFB:time for First Byte 首字节时间
+1. TTFB(time to First Byte) 浏览器接收第一个字节的时间
 2. FP(first paint) 首次内容绘制，仅有一个div根节点
 3. FCP(first content paint) 首次有内容的绘制，页面基本框架，但没有数据
 4. FMP(first meaning paint) 首次有意义的绘制
@@ -113,3 +113,96 @@ Lighthouse Performance:
 6. Long tasks:超过50ms的任务
 7. SSR && CSR:服务端渲染和客户端渲染
 8. Isomorphic JS:同构化
+
+### 加载慢原因及方案
+
+1. 资源加载问题
+    1. 速度慢
+        - 优化加载速度
+            - rel dns-prefetch
+            - preconnect
+            - http2
+        - 预加载
+            - preload
+        - http请求数量多
+            - 资源合并
+                + sprite
+                + icon svg等打包进js css
+                + 小文件合并
+    2. 文件大
+        - 压缩
+            + html 压缩 html-minifier
+            + js 压缩 uglify-js
+            + css 压缩 clean-css
+            + gzip
+            + 图片的优化
+                + 图片格式
+                    - jpg jpeg png webp base64
+                + 图片压缩
+        - 懒加载 延迟 异步
+        - 分包
+    3. 缓存
+        - 强缓存
+        - 协商缓存
+        - service woker
+2. 渲染问题
+    + DOM 操作的优化
+    + 渲染应用
+        - lazy load
+        - load before
+        - debounce throttle
+        - debounce 防抖 最后一个人说的算
+        - throttle 节流 第一个人说的算
+        - 异步线程
+        - script 标签 defer async
+        - defer 异步下载 domContentLoaded 事件前执行
+        - async 异步下载 下载后执行
+        - preload  预下载  下载后并不执行 需要时执行
+        - prefetch 预判下载  闲时下载
+    + ssr
+
+
+参考: https://alienzhou.github.io/fe-performance-journey/
+
+
+1. 网络延时问题
+2. 资源文件体积是否过大
+3. 资源是否重复发送请求
+4. 加载脚本时,渲染内容堵塞了
+
+
+
+
+
+### 主要流程
+
+1. dns 解析优化, 提前获取 IP 地址
+    `<link rel="dns-prefetch" href="" />`
+2. TCP 连接优化
+    `<link href="https:" rel="preconnect" />`
+3. 请求优化
+    - http2 多路复用 首部压缩 二进制分帧 等 
+4. 页面解析优化
+    - ssr
+    - 预渲染 prerender-spa-plugin
+5. 资源加载优化和页面渲染优化
+    - 减少资源大小
+        - gzip 
+        - 拆分后动态加载
+    - 加快加载速度
+        - cnd
+        - http2
+    - 预加载
+        - prefetch 预请求 
+        - preload
+6. 接口合并 
+
+
+
+#### prefetch preload
+
+preload 告诉浏览器立即加载资源;
+prefetch 告诉浏览器在空闲时才开始加载资源；
+preload、prefetch 仅仅是加载资源，并不会“执行”;
+preload、prefetch 均能设置、命中缓存；
+正确使用 preload、prefetch 不会导致重复请求；

@@ -41,3 +41,17 @@ Vue3 通过Proxy 劫持state中各属性的 setter getter 通过getter收集依�
     - map set class 等无法响应
   - 重写了数组方法进行监听, 修改数组索引的方式会监听不到， Array.splice 方式实现
   - $set 实现原理 数组就是 Array.splice
+
+
+  观察者 结合 订阅发布模式 
+  - 实例化时, 对data属性进行数据劫持, 观察者对象，  
+  - 组件有watcher 实例，即订阅者，在实例化时， 会进行依赖收集， 把相应的data收集到Dep中(发布者)
+  - 数据变化， dep 通知watcher ，然后更新
+
+
+  - 采用 数据劫持 结合 发布订阅模式
+    - 遍历需要观察的数据， 劫持setter/getter属性，getter时收集相关依赖， setter时触发响应 通知给订阅者
+    - compiler 解析模板指令， 将模板变量替换为数据， 初始化渲染时 对每个指定对应的节点绑定更新函数，添加监听数据的订阅者， 数据有变 收到通知 更新视图
+    - wathcer 订阅者， 是 观察者和compiler 之间的桥梁， 中转站的功能
+      - 自身实例化时 往 属性订阅器dep 添加自己 用来收集watcher
+      - 属性变化时，dep 执行 notify 通知 watcher 执行update，也就是compiler 添加到订阅者的 回调

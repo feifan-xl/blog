@@ -34,6 +34,21 @@ ECMAScript 模块是 官方标准格式
 - CommonJS 支持动态导入, 也就是 require(`${path}/xx.js`)
 
 
+### 加载原理
+
+*commonjs* 在node内部生成一个对象,并缓存数据 
+无论加载多少次，都只会在第一次加载时运行一次
+```js
+{
+  id: '...',
+  exports: { ... },
+  loaded: true,
+  ...
+}
+```
+
+
+
 ## other Module
 
 `AMD` 异步模块规范 
@@ -58,9 +73,10 @@ ECMAScript 模块是 官方标准格式
 
 ## circular dependency
 
-加载机制上的不同  
+加载机制上的不同 , 但是对于循环加载， 都是执行到哪就加载哪 
 - CommonJS 加载时执行 出现循环式 只输出已执行部分
 - EMS 动态引入，加载为引用地址
+
 
 ### CommonJS
 
@@ -140,3 +156,13 @@ ES6 模块是`动态引用`，如果使用import从一个模块加载变量（�
   a.mjs
   bar
 ```
+
+
+#### esm加载规则
+
+defer: 渲染完再执行
+async: 下载完就执行
+type="module": 异步加载,渲染后按顺序执行，如果与async一起使用就不会按顺序进行
+
+
+
