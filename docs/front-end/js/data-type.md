@@ -186,7 +186,12 @@ valueOf: 返回它相应的原始值
   - 先调用 valueof 如果返回结果不是 string 再调用toString 
   - 如果都没有返回原始类型， 就会报错
 
+```js
+a = function () {}
+a.valueOf = function () {return 1}
+a == 1 // true
 
+```
 ### traverse
 
 #### object

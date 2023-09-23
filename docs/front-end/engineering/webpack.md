@@ -2,10 +2,16 @@
 sidebarDepth: 2
 ---
 
+
 ## webpack
 
 是一种模块打包工具,可以将各类型的资源,如图片,css,js等, 转译组合为js格式的bunble文件 
 
+1. 构建流程
+2. loader/ plugin
+3. splitechunk
+4. tree shaking
+5. hmr
 
 
 ### 构建流程
@@ -23,7 +29,10 @@ sidebarDepth: 2
     1. 输出资源: 根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会
     2. 写入文件系统: 确定好输出内容后，根据配置的 output 将内容写入文件系统
 
+### compiler compilation
 
+- Compiler 对象包含了 Webpack 环境所有的的配置信息，包含 options，loaders，plugins 这些信息，这个对象在 Webpack 启动时候被实例化，它是全局唯一的，可以简单地把它理解为 Webpack 实例
+- Compilation 对象包含了当前的模块资源、编译生成资源、变化的文件等 只是代表了一次新的编译
 
 ### loader/plugin
 
@@ -32,10 +41,13 @@ sidebarDepth: 2
 如 sass-loader -> css -> css-loader -> 找出依赖资源 压缩css -> style-loader -> 转化成通过脚本加载的js
 
 *plugin*
-插件， 用来增强 loader 功能， 解决 loader 无法实现的功能  
+插件， 用来增强 weback 功能， 解决 loader 无法实现的功能  
 webpack 本质是一个事件流机制，在运行的生命周期中会广播出许多事件， plugin 可以监听这些事件， 在合适的时机通过webpack提供的API改变输出结果 
 plugin 调用方式：异步 同步 异步并行串行 熔断方式(循环执行 跳过)
 
+运行时机:
+- loader: 打包文件前
+- plugin 全周期 
 
 ### splitChunk
 
@@ -60,6 +72,12 @@ Tree-Shaking 是一种基于 ES Module 规范中 静态代码分析 的 无用�
 
 
 ### hot module replace HMR
+
+本质是 webpack-dev-server, 添加了对webpack编译的监听， 并维护与浏览器间的websocket
+- 当编译文件变化时， 推送更新, 带上构建时的hash
+- 比对hash,发起请求获取更改内容, 通过jsonp获取增量更新,使用内存文件系统去替换有修改的内容
+
+
 
 本质是开启了 express 应用， 添加了对webpack编译的监听, 添加了和浏览器的websocket长链接  
 当文件变化 触发 webpack 进行编译并完成, 会通过 sokcet 消息告诉浏览器准备刷新  会刷新某个模块  
@@ -164,3 +182,15 @@ webpack-dev-server 支持热更新  通过 生成文件的hash值来比对需要
 
 
 1. CommonsChunkPlugin 对多入口公有依赖进行提取  
+
+
+
+## webpack 5 
+1. module Federation: 允许多个webpack 编译产物间共享模块和依赖
+  - 应用间组件互用
+  - host 应用和 remote 应用组件的依赖共享 
+2.  tree-shaking 优化
+  - commonjs 通过对 `require()` 的调用跟踪一些相关的导出变量
+  - export default 之前会被认为必使用， 现在会做更优的判断
+  - 嵌套的 tree-shaking， 跟踪对导出的嵌套属性的访问
+3. 持久化缓存
