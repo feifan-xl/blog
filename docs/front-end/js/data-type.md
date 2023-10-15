@@ -186,6 +186,11 @@ valueOf: 返回它相应的原始值
   - 先调用 valueof 如果返回结果不是 string 再调用toString 
   - 如果都没有返回原始类型， 就会报错
 
+- 在进行对象运算时，将优先调用 toString 方法，如若没有重写 toString 方法，则会调用 valueOf 方法；如果两个方法都没有重写，则会调用 Object 上面的 toString
+- 当进行强制类型转换时，如果转换成字符串则会调用 toString ，转换成数字则会调用 valueOf
+- 使用运算符进行运算时，valueOf 的优先级高于 toString
+
+#面试题分析
 ```js
 a = function () {}
 a.valueOf = function () {return 1}
@@ -240,7 +245,14 @@ a == 1 // true
     Object.prototype.toString.call({}) // '[object Object]'
   ```
 
+Object.prototype.toString.call(xx) 实现原理
+  - 若参数(xx)不为 null 或 undefined，则将参数转为对象，再作判断
+  - 转为对象后，取得该对象的 [Symbol.toStringTag] 属性值（可能会遍历原型链）作为 tag，然后返回 "[object " + tag + "]" 形式的字符串。
 
+作者：前端小魔女
+链接：https://juejin.cn/post/7202904269535887418
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 ### problem
 
 1. 数组的检查
@@ -270,7 +282,12 @@ a == 1 // true
 
 5. js 中的 包装类型
   基本类型是没有属性和方法的 , 但是为了便于操作, 调用基本类型的属性或方法时  会隐私的转换为对象  
-    
+
+6. Object.is
+  ```JS
+  Object.is(NaN, NaN) // true
+  Object.is(NaN, 0/0) // true
+  ```
   
 ## 4.copy
 

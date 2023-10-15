@@ -25,6 +25,8 @@
 // 24. list to tree
 // 25. compose
 // 26. reduce
+// 27. Object.assign
+
 
 // 1. call
 
@@ -135,7 +137,7 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
                 const x = onFulfilled(promise1Value) 
                 promiseResolution(promise2, x, resolve, reject)
             } else {
-                resolve(promise1Value)
+                resolve(self.value)
             }
         } else if (self.state === 'rejected') {
 
@@ -554,21 +556,35 @@ function add (...arg1) {
 function run (genF) {
     return new Promise((resolve, reject) => {
         const gen = genF()
-        function step (genNext) {
+        function step (type, arg) {
             let next 
             try {
-                next = genNext()
+                next = gen[type](arg)
             } catch (e) {
                 reject(e)
             }
             if (next.done) return resolve(next.value)
-            Promise.resolve(next.value).then(res => {
-                step(() => gen.next(res))
-            }, e => step(() => gen.throw(e)))
+            Promise.resolve(next.value).then(
+                res =>step('next', res),
+                e => step('throw', e)
+            )
         }
-        step(() => gen.next(undefined))
+        step('next')
     })
 }
+
+getData = () => new Promise(resolve => setTimeout(() => resolve('data'), 1000));
+function* testG() {
+    const data = yield getData();
+    console.log('data: ', data);
+    const data2 = yield getData();
+    console.log('data2: ', data2);
+    return 'success';
+  }
+  
+const gen = asyncToGen(testG);
+gen().then(res => console.log(res));
+
 
 // 24. list to tree
 const list = [
@@ -625,3 +641,23 @@ Array.prototype.myReduce = function (fn, init) {
         result = fn(result, this[i], i, this)
     }
 }
+
+
+// 27.object.assign
+Object.defineProperty(Object, 'assign', {
+    value: function (target, ...sources) {
+        
+        var tmp = target
+        sources.forEach(i => {
+            for (var key in i) {
+                if (i.hasOwnProperty(key)) {
+                    tmp[key] = i[key]
+                }
+            }
+        })
+        return tmp
+    },
+    enumerable: false,
+    configurable: true,
+    writable: true
+})

@@ -151,6 +151,7 @@ NodeJS中执行宏队列的回调任务有6个阶段，按如下方式依次执�
 
 注意:
 1. `Process.nextTick()`虽然是异步API, 但是技术上, 不是事件循环的一部分  
+2. setTimeout(0) 与 setImmediate 随机
 
 ### summary
 1. 事件循环是 浏览器 和 Node 执行JS代码的核心机制，但浏览器 和 NodeJS事件循环的实现机制有些不同
