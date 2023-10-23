@@ -97,3 +97,7 @@ no-cache 和 no-store 这两个指令在请求和响应中都可以使用
 no-store 是真正的不进行任何缓存，告知服务器和缓存服务器，我请求、响应的内容里有机密信息；
 当 no-cache 在请求头中被使用时，表示强制使用协商缓存
 当 no-cache 在响应头中被返回时，表示缓存服务器不能对资源进行缓存，客户端可以缓存资源，但每次使用缓存资源前都必须先向服务器确认其有效性
+
+
+启发式缓存:
+如果 Expires，Cache-Control: max-age，或 Cache-Control: s-maxage 都没有在响应头中出现，并且设置了Last-Modified时

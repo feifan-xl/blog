@@ -258,8 +258,8 @@ function newObj (target, ...args) {
 
 function deepClone (origin, map = new Map()) {
     
-    if (Object.prototype.toString(origin) !== '[Object object]' && 
-    Object.prototype.toString(origin) !== '[Object Array]') {
+    if (Object.prototype.toString(origin) !== '[object Object]' && 
+    Object.prototype.toString(origin) !== '[object Array]') {
         return origin
     }
     if (map.has(origin)) {
