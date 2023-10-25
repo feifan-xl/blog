@@ -249,10 +249,6 @@ Object.prototype.toString.call(xx) 实现原理
   - 若参数(xx)不为 null 或 undefined，则将参数转为对象，再作判断
   - 转为对象后，取得该对象的 [Symbol.toStringTag] 属性值（可能会遍历原型链）作为 tag，然后返回 "[object " + tag + "]" 形式的字符串。
 
-作者：前端小魔女
-链接：https://juejin.cn/post/7202904269535887418
-来源：稀土掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 ### problem
 
 1. 数组的检查
