@@ -11,7 +11,7 @@
 // 10. 二分查找
 // 11. quick sorting
 // 12. bubble sort
-// 13. select sort
+// 13. select sort 
 // 14. ajax xhr
 // 15. 订阅发布
 // 16. fibonacci
@@ -626,6 +626,47 @@ function compose(...fns) {
         return fns.reduce((acc, cur) => cur(acc), ...args)
     }
 }
+
+// 洋葱模型
+
+function Fn () {
+    this.middlwares = []
+  }
+  
+  Fn.prototype.use = function (f) {
+    this.middlwares.push(f)
+  }
+  Fn.prototype.run = function (ctx) {
+    let self = this
+    function dispatch(i) {
+      let f = self.middlwares[i]
+      if (!f) return
+      return f(ctx, dispatch.bind(null, i + 1))
+    }
+    dispatch(0)
+  }
+  
+  
+  const fn = new Fn()
+  let mw1 = async function (ctx, next) {
+    console.log("next前，第一个中间件")
+    await next()
+    console.log("next后，第一个中间件")
+  }
+  let mw2 = async function (ctx, next) {
+    console.log("next前，第二个中间件")
+    await next()
+    console.log("next后，第二个中间件")
+  }
+  let mw3 = async function (ctx, next) {
+    console.log("第三个中间件，没有next了")
+  }
+  fn.use(mw1)
+  fn.use(mw2)
+  fn.use(mw3)
+  fn.run()
+
+
 
 // 26. reduce
 [].reduce((acc, cur, idx, ori) => {}, i)
