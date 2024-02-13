@@ -37,6 +37,13 @@ const s = new Set()
 
 ### map
 
+### vs object
+
+可以记录插入的顺序 并使用 entries 进行遍历
+key可以是任意值, 而object不可以
+可以使用 for...of 遍历 
+
+
 #### api
 size
 set
@@ -46,11 +53,12 @@ delete
 clear
 
 #### 遍历
-keys
-values
-entries
-forEach
-for...of
+- keys
+- values
+- entries
+    for (let i of map.entries()) console.log(i)
+- forEach
+- for...of
 
 #### 与其他数据的转换
 

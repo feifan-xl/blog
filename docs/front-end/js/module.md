@@ -16,6 +16,10 @@ CommonJS 模块是为 Node.js 打包 JavaScript 代码的原始方式
   const b = require('./b.js');
 ```
 
+
+
+
+
 ## EMS
 
 ECMAScript 模块是 官方标准格式  
@@ -29,17 +33,27 @@ ECMAScript 模块是 官方标准格式
 ## difference between CommonJS and EMS
 
 - CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用
-- CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
-- CommonJS 模块的require()是同步加载模块，ES6 模块的import命令是异步加载，有一个独立的模块依赖的解析阶段
+  - 输出的是值的拷贝, 对于基本类型的输出 一旦输出就不会改变(更多的像是传参过程中入参的形式)
+  - 值的引用, import 会生成一个只读引用， 并是不是赋值
+- CommonJS 模块是运行时加载， ES6 模块是编译时输出接口()
+- CommonJS 模块的require()是同步加载模块有缓存，ES6 模块的import命令是异步加载，有一个独立的模块依赖的解析阶段
 - CommonJS 支持动态导入, 也就是 require(`${path}/xx.js`)
 
+
+es6
+  - 动态导入是JavaScript ES2019中新增的语法特性，它可以通过将代码按需导入，从而实现更加高效的加载方式
+
+### esm cjs 转化
+
+esm的 
 
 ### 加载原理
 
 *commonjs* 在node内部生成一个对象,并缓存数据 
 无论加载多少次，都只会在第一次加载时运行一次
+
 ```js
-{
+Module = {
   id: '...',
   exports: { ... },
   loaded: true,
@@ -112,6 +126,37 @@ CommonJS 模块的重要特性是加载时执行，即脚本代码在require的�
     a.js 执行完毕
     在 main.js 之中, a.done=true, b.done=true
   ```
+
+  commonjs 实现原理
+每个模块文件上都存在三个变量
+- module 记录当前模块信息。
+- require 引入模块的方法。
+- exports 当前模块导出的属性
+
+require模块引入与处理
+同步加载并执行模块文件， 在执行阶段分析模块依赖
+采用dfs的方式 来处理循环引用
+
+require加载原理
+在内存中会存在一个Module对象, 用来存放已加载的模块
+require 的对象加载后会被缓存到这个对象上
+
+
+exports & module.exports
+
+exports 是当前模块导出的属性, 是每个文件模块上的入参 
+所以不能被重新赋值 
+
+module.exports 与 exports 本质上是相同的, 指向的是相同的引用 
+所以同时声明会发生覆盖
+
+exports会被初始化为对象，也就是在对象上绑定属性 
+module.exports更加灵活 可以导出任意类型的
+
+特点:
+- 同步加载
+- 有缓存
+
 ### ESM
 
 ES6 模块是`动态引用`，如果使用import从一个模块加载变量（即import foo from 'foo'），那些变量不会被缓存，而是成为一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。

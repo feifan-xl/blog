@@ -105,6 +105,7 @@
 ### composition API 原理
 
 ref 其实是reactive的再次封装, 主要用来给基本类型使用
+在内部生成对应的响应式对象,该内部值挂载到ref对象的value属性上
 
 
 
@@ -113,3 +114,40 @@ ref 其实是reactive的再次封装, 主要用来给基本类型使用
   - watch 是侦测一个或多个响应式数据源并在数据源变化时调用一个回调函数
 
 > https://juejin.cn/post/7139921537896808479#heading-5
+
+
+
+### vue 2.7 
+
+compsition API
+script setup
+css v-bind
+对ts的支持(2.7使用ts重写的)
+
+差异:
+基于setter/getter 实现的响应式, 所有数组仍有问题
+reactive()、ref() 和 shallowReactive() 会直接转换原始的对象而不是创建代理。
+避免将数组作为 reactive() 的根值。因为无法访问属性，数组的变更不会被追踪到 (这样做会产生一则警告)。
+
+
+### vue3.x
+
+通过 proxy 对对象进行代理
+get时, 执行track 把 effect 注册到 dep map (依赖集)中
+set时, 执行trigger, 把依赖集中 所有effect执行一遍 
+
+weakmap = key ->target目标对象 
+          value -> deps map
+depsmap = key -> 目标对象的属性
+          value -> set() effect list
+
+
+
+### vue2 3 响应式原理的区别
+2.x中，通过object.defineProperty 将对象的属性转换成getter/setter 的形式来监听他们的变化，当读取属性值的时候会触发getter进行依赖收集，当设置对象属性值时会触发setter,对依赖的订阅者发送通知, 从而进行更新
+
+3.x 通过 Proxy 对数据实现 getter/setter 代理，从而实现响应式数据，然后在副作用函数中读取响应式数据的时候，就会触发 Proxy 的 getter，在 getter 里面把对当前的副作用函数保存起来，将来对应响应式数据发生更改的话，则把之前保存起来的副作用函数取出来执行
+
+
+
+您好，我想应聘贵司的前端开发岗位, 期盼回复 谢谢

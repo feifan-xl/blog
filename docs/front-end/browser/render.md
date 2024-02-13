@@ -144,3 +144,9 @@ https://segmentfault.com/a/1190000023609412
 - 需要多次重排的元素 positon 为absolute fixed， 脱离文档流，就不回影响其他元素
 - display none
 
+
+### 为什么操作dom 慢
+
+dom是渲染线程中,js是js引擎线程中，操作涉及两个线程间的通信,性能上有损耗  
+而且操作dom会触发渲染线程的重绘回流，增加损耗
+
