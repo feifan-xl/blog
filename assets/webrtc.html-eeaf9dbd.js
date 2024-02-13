@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-8c3ee86e","path":"/other-tech/webrtc.html","title":"","lang":"en-US","frontmatter":{},"headers":[],"git":{},"filePathRelative":"other-tech/webrtc.md"}');export{e as data};

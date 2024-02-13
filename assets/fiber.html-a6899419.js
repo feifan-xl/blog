@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0f06d0e4","path":"/front-end/react/fiber.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"fiber","slug":"fiber","link":"#fiber","children":[]},{"level":3,"title":"why not vue","slug":"why-not-vue","link":"#why-not-vue","children":[]}],"git":{},"filePathRelative":"front-end/react/fiber.md"}');export{e as data};

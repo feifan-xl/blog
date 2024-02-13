@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-631e88f2","path":"/front-end/es6/let_const.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"let const","slug":"let-const","link":"#let-const","children":[]}],"git":{},"filePathRelative":"front-end/es6/let_const.md"}');export{t as data};

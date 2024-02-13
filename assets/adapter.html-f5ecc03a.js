@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-f1795d02","path":"/CS-other/design-patterns/constructor/adapter.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"适配器模式","slug":"适配器模式","link":"#适配器模式","children":[]}],"git":{},"filePathRelative":"CS-other/design-patterns/constructor/adapter.md"}');export{t as data};

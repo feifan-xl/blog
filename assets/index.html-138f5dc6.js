@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-5d33ab10","path":"/algorithm-and-data/algorithm/","title":"","lang":"en-US","frontmatter":{"sidebar":false},"headers":[{"level":3,"title":"目录","slug":"目录","link":"#目录","children":[]}],"git":{},"filePathRelative":"algorithm-and-data/algorithm/index.md"}');export{a as data};

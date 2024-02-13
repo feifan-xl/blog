@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0a33caba","path":"/front-end/vue/diff.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"vue 中的 diff","slug":"vue-中的-diff","link":"#vue-中的-diff","children":[]}],"git":{},"filePathRelative":"front-end/vue/diff.md"}');export{e as data};

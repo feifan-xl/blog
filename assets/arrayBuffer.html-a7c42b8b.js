@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6dbddf78","path":"/front-end/es6/arrayBuffer.html","title":"","lang":"en-US","frontmatter":{},"headers":[],"git":{},"filePathRelative":"front-end/es6/arrayBuffer.md"}');export{e as data};

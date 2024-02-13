@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6905204d","path":"/CS-other/design-patterns/action/mediator.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"中介者模式","slug":"中介者模式","link":"#中介者模式","children":[]}],"git":{},"filePathRelative":"CS-other/design-patterns/action/mediator.md"}');export{t as data};

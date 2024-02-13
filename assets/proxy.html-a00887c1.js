@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-f7e33200","path":"/CS-other/design-patterns/constructor/proxy.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"proxy 代理模式","slug":"proxy-代理模式","link":"#proxy-代理模式","children":[]}],"git":{},"filePathRelative":"CS-other/design-patterns/constructor/proxy.md"}');export{t as data};

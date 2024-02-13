@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-768c051a","path":"/front-end/vue/pinia%20_%20vuex.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"使用及原理","slug":"使用及原理","link":"#使用及原理","children":[]},{"level":3,"title":"vuex","slug":"vuex","link":"#vuex","children":[]}],"git":{},"filePathRelative":"front-end/vue/pinia & vuex.md"}');export{e as data};

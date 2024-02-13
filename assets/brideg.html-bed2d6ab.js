@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-7e1b8477","path":"/CS-other/design-patterns/constructor/brideg.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"桥接模式","slug":"桥接模式","link":"#桥接模式","children":[]}],"git":{},"filePathRelative":"CS-other/design-patterns/constructor/brideg.md"}');export{t as data};

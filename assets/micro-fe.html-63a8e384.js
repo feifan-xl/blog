@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-3d9e64fe","path":"/front-end/other/micro-fe.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"意义","slug":"意义","link":"#意义","children":[]}],"git":{},"filePathRelative":"front-end/other/micro-fe.md"}');export{e as data};

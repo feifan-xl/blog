@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-a2f34b6c","path":"/CS-other/design-patterns/action/observer.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"观察者模式","slug":"观察者模式","link":"#观察者模式","children":[]}],"git":{},"filePathRelative":"CS-other/design-patterns/action/observer.md"}');export{e as data};

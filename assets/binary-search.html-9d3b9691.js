@@ -1,0 +1,1 @@
+const a=JSON.parse('{"key":"v-939a7646","path":"/algorithm-and-data/algorithm/binary-search.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"二分","slug":"二分","link":"#二分","children":[]}],"git":{},"filePathRelative":"algorithm-and-data/algorithm/binary-search.md"}');export{a as data};

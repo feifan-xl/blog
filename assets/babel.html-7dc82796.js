@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-433f9c7c","path":"/front-end/engineering/babel.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"babel","slug":"babel","link":"#babel","children":[]}],"git":{},"filePathRelative":"front-end/engineering/babel.md"}');export{e as data};

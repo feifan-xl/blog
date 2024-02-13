@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-9611b7dc","path":"/other-tech/rust.html","title":"","lang":"en-US","frontmatter":{},"headers":[{"level":3,"title":"内存管理","slug":"内存管理","link":"#内存管理","children":[]}],"git":{},"filePathRelative":"other-tech/rust.md"}');export{t as data};

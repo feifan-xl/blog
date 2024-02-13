@@ -1,0 +1,1 @@
+import{_ as o,o as n,c as a,a as e,b as t}from"./app-5e6e879c.js";const s={},c=e("p",null,[t("a private blog for record infomations about anything"),e("br"),t(" updated based on interst")],-1),r=e("p",null,"and developing...",-1),_=[c,r];function d(i,l){return n(),a("div",null,_)}const p=o(s,[["render",d],["__file","index.html.vue"]]);export{p as default};

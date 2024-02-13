@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-485cf88e","path":"/CS-other/design/","title":"","lang":"en-US","frontmatter":{"sidebar":false},"headers":[{"level":3,"title":"目录","slug":"目录","link":"#目录","children":[]}],"git":{},"filePathRelative":"CS-other/design/index.md"}');export{e as data};
